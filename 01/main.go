@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 )
 
 func readLines(path string) ([]string, error) {
@@ -25,18 +24,18 @@ func readLines(path string) ([]string, error) {
 }
 
 func Answer1(lines []string) int {
-	var current_calories uint64 = 0
-	var max_calories uint64 = 0
+	var current_calories int64 = 0
+	var max_calories int64 = 0
 
-	for _, depth := range lines {
-		if len(depth) == 0 {
+	for _, line := range lines {
+		if len(line) == 0 {
 			if current_calories > max_calories {
 				max_calories = current_calories
 			}
 			current_calories = 0
 		}
 
-		if i, err := strconv.ParseUint(depth, 10, 32); err == nil {
+		if i, err := ParseInt(line); err == nil {
 			current_calories += i
 		}
 	}
@@ -50,19 +49,19 @@ func Answer1(lines []string) int {
 }
 
 func Answer2(lines []string) int {
-	var current_calories uint64 = 0
+	var current_calories int64 = 0
 
 	eq := make(ElfQueue, 0)
 
-	for _, depth := range lines {
-		if len(depth) == 0 {
+	for _, line := range lines {
+		if len(line) == 0 {
 			elf := Elf{calories: int(current_calories)}
 			eq.Push(&elf)
 			heap.Push(&eq, &elf)
 			current_calories = 0
 		}
 
-		if i, err := strconv.ParseUint(depth, 10, 32); err == nil {
+		if i, err := ParseInt(line); err == nil {
 			current_calories += i
 		}
 	}

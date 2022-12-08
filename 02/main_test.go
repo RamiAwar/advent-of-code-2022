@@ -1,17 +1,14 @@
 package main
 
 import (
-	"log"
 	"testing"
 )
 
-func TestAnswer(t *testing.T) {
-	lines, err := readLines("test_input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+var input, _ = readLines("input.txt")
+var testInput, _ = readLines("test_input.txt")
 
-	answer := Answer1(lines)
+func TestAnswer(t *testing.T) {
+	answer := Answer1(testInput)
 	expected := 15
 	if answer != expected {
 		t.Errorf("expected %d, got %d", expected, answer)
@@ -19,14 +16,21 @@ func TestAnswer(t *testing.T) {
 }
 
 func TestAnswer2(t *testing.T) {
-	lines, err := readLines("test_input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	answer := Answer2(lines)
+	answer := Answer2(testInput)
 	expected := 12
 	if answer != 12 {
 		t.Errorf("expected %d, got %d", expected, answer)
+	}
+}
+
+func BenchmarkAnswer1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Answer1(input)
+	}
+}
+
+func BenchmarkAnswer2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Answer2(input)
 	}
 }

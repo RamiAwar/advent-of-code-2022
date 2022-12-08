@@ -1,0 +1,16 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/RamiAwar/advent-of-code-2022/01
+cpu: VirtualApple @ 2.50GHz
+BenchmarkAnswer1-8   	  101281	     12566 ns/op
+BenchmarkAnswer1-8   	   94094	     12095 ns/op
+BenchmarkAnswer1-8   	  100222	     12118 ns/op
+BenchmarkAnswer1-8   	   99663	     11991 ns/op
+BenchmarkAnswer1-8   	  101625	     11829 ns/op
+BenchmarkAnswer2-8   	   45474	     25438 ns/op
+BenchmarkAnswer2-8   	   47155	     25732 ns/op
+BenchmarkAnswer2-8   	   45132	     26774 ns/op
+BenchmarkAnswer2-8   	   44841	     25727 ns/op
+BenchmarkAnswer2-8   	   44548	     26068 ns/op
+PASS
+ok  	github.com/RamiAwar/advent-of-code-2022/01	14.622s

@@ -2,11 +2,9 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func readLines(path string) ([]string, error) {
@@ -81,41 +79,39 @@ func CalculateMove(opponentMove Move, result Result) Move {
 	return opponentMove
 }
 
-func ParseMove(s string) (Move, error) {
-	if s == "A" || s == "X" {
+func ParseMove(s rune) (Move, error) {
+	if s == 'A' || s == 'X' {
 		return Rock, nil
-	} else if s == "B" || s == "Y" {
+	} else if s == 'B' || s == 'Y' {
 		return Paper, nil
-	} else if s == "C" || s == "Z" {
+	} else if s == 'C' || s == 'Z' {
 		return Scissors, nil
 	}
 
-	return Move(10), errors.New(fmt.Sprintf("'%s' is not a valid move", s))
+	return Move(10), fmt.Errorf("'%q' is not a valid move", s)
 }
 
-func ParseResult(s string) (Result, error) {
-	if s == "X" {
+func ParseResult(s rune) (Result, error) {
+	if s == 'X' {
 		return Lose, nil
-	} else if s == "Y" {
+	} else if s == 'Y' {
 		return Draw, nil
-	} else if s == "Z" {
+	} else if s == 'Z' {
 		return Win, nil
 	}
-	return Result(0), errors.New(fmt.Sprintf("'%s' is ot a valid result", s))
+	return Result(0), fmt.Errorf("'%q' is ot a valid result", s)
 }
 
 func Answer1(lines []string) int {
 	totalScore := 0
 
 	for _, line := range lines {
-		moves := strings.Split(line, " ")
-
 		var opponentMove, yourMove Move
-		if i, err := ParseMove(moves[0]); err == nil {
+		if i, err := ParseMove(rune(line[0])); err == nil {
 			opponentMove = i
 		}
 
-		if i, err := ParseMove(moves[1]); err == nil {
+		if i, err := ParseMove(rune(line[2])); err == nil {
 			yourMove = i
 		}
 
@@ -129,17 +125,14 @@ func Answer2(lines []string) int {
 	totalScore := 0
 
 	for _, line := range lines {
-		moves := strings.Split(line, " ")
 		var opponentMove, yourMove Move
-		if i, err := ParseMove(moves[0]); err == nil {
+		if i, err := ParseMove(rune(line[0])); err == nil {
 			opponentMove = i
 		}
 
-		if i, err := ParseResult(moves[1]); err == nil {
+		if i, err := ParseResult(rune(line[2])); err == nil {
 			yourMove = CalculateMove(opponentMove, i)
 		}
-
-		fmt.Println("your move: ", yourMove)
 
 		totalScore += int(yourMove) + int(CalculateScore(opponentMove, yourMove))
 	}

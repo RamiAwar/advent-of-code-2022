@@ -1,0 +1,6 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/RamiAwar/advent-of-code-2022/02
+cpu: VirtualApple @ 2.50GHz
+BenchmarkAnswer1-8   	signal: interrupt
+FAIL	github.com/RamiAwar/advent-of-code-2022/02	1.253s
