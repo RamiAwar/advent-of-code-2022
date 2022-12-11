@@ -115,10 +115,10 @@ func ProcessInput(lines []string) (*Stacks, *Moves) {
 
 // Get top of list of stacks as string
 func GetTopCrates(stacks *Stacks) string {
-	top := make([]rune, len(*stacks))
+	top := make([]rune, 0)
 	for i := range *stacks {
 		if (*stacks)[i].Len() > 0 {
-			top[i] = (*stacks)[i].PopFront()
+			top = append(top, (*stacks)[i].PopFront())
 		}
 	}
 	return string(top)
