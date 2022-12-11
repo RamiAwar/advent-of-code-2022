@@ -61,7 +61,7 @@ func TestAnswer(t *testing.T) {
 func TestAnswer2(t *testing.T) {
 	answer := Answer2(testInput)
 	expected := 70
-	if answer != 70 {
+	if answer != expected {
 		t.Errorf("expected %d, got %d", expected, answer)
 	}
 }
