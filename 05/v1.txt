@@ -1,0 +1,15 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/RamiAwar/advent-of-code-2022/05
+BenchmarkAnswer1-8   	  293402	      4023 ns/op
+BenchmarkAnswer1-8   	  303919	      4100 ns/op
+BenchmarkAnswer1-8   	  303990	      4241 ns/op
+BenchmarkAnswer1-8   	  297282	      4103 ns/op
+BenchmarkAnswer1-8   	  295760	      4149 ns/op
+BenchmarkAnswer2-8   	  286855	      4289 ns/op
+BenchmarkAnswer2-8   	  291409	      4287 ns/op
+BenchmarkAnswer2-8   	  238640	      4310 ns/op
+BenchmarkAnswer2-8   	  276838	      4244 ns/op
+BenchmarkAnswer2-8   	  292581	      4327 ns/op
+PASS
+ok  	github.com/RamiAwar/advent-of-code-2022/05	13.848s
